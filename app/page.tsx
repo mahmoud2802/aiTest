@@ -1,17 +1,38 @@
 "use client"
-import Image from "next/image";
-import {CartesianGrid, Scatter, ScatterChart, Tooltip, XAxis, YAxis} from "recharts";
-import Perceptrons from "@/app/Ai/Perceptrons/Perceptrons";
+import SimpleLinerRegession from "@/components/SimpleLinerRegession";
 
+const xArray:number[] = [];
+const yArray:number[] = [];
+const desired:number[] = [];
+const numPoint=500
 
+for(let i=0;i<numPoint;i++){
+  xArray[i]=Math.random()*500
+  yArray[i]=Math.random()*500
+}
 
+// Line function: f(x) = x * 1.2 + 50
+function f(x: number): number {
+  return x * 1.2 + 50;
+}
+
+// Compute desired answers
+for(let i=0;i<numPoint;i++){
+  desired[i] = 0;
+  if(yArray[i] > f(xArray[i])) {
+    desired[i] = 1;
+  }
+}
 
 export default function Home() {
     return (
-        <div  style={{margin:100}}>
+        <div style={{ padding: "20px" }}>
             <main>
-                <Perceptrons></Perceptrons>
-
+                <h1>Pattern Recognition - Perceptron</h1>
+                <p>Points in BLACK are above the line (desired = 1)</p>
+                <p>Points in BLUE are below the line (desired = 0)</p>
+                <p>Line: f(x) = x * 1.2 + 50</p>
+                <SimpleLinerRegession width={500} height={400} iter={500} />
             </main>
         </div>
     );
