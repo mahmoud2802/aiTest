@@ -1,5 +1,6 @@
 "use client"
 import SimpleLinerRegession from "@/components/SimpleLinerRegession";
+import TensorSImpleExmaple from "@/components/TensorSImpleExmaple";
 
 const xArray:number[] = [];
 const yArray:number[] = [];
@@ -33,6 +34,7 @@ export default function Home() {
                 <p>Points in BLUE are below the line (desired = 0)</p>
                 <p>Line: f(x) = x * 1.2 + 50</p>
                 <SimpleLinerRegession width={500} height={400} iter={500} />
+                <TensorSImpleExmaple></TensorSImpleExmaple>
             </main>
         </div>
     );
